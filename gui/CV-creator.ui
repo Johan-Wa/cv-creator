@@ -903,7 +903,7 @@ QTableWidget QTableCornerButton::section{
                        </property>
                        <property name="icon">
                         <iconset>
-                         <normaloff>../../../../../../../../../../.designer/backup/src/archivo.svg</normaloff>../../../../../../../../../../.designer/backup/src/archivo.svg</iconset>
+                         <normaloff>src/archivo.svg</normaloff>src/archivo.svg</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -926,7 +926,7 @@ QTableWidget QTableCornerButton::section{
                        </property>
                        <property name="icon">
                         <iconset>
-                         <normaloff>../../../../../../../../../../.designer/backup/src/archivo.svg</normaloff>../../../../../../../../../../.designer/backup/src/archivo.svg</iconset>
+                         <normaloff>src/archivo.svg</normaloff>src/archivo.svg</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -949,7 +949,7 @@ QTableWidget QTableCornerButton::section{
                        </property>
                        <property name="icon">
                         <iconset>
-                         <normaloff>../../../../../../../../../../.designer/backup/src/archivo.svg</normaloff>../../../../../../../../../../.designer/backup/src/archivo.svg</iconset>
+                         <normaloff>src/archivo.svg</normaloff>src/archivo.svg</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -972,7 +972,7 @@ QTableWidget QTableCornerButton::section{
                        </property>
                        <property name="icon">
                         <iconset>
-                         <normaloff>../../../../../../../../../../.designer/backup/src/archivo.svg</normaloff>../../../../../../../../../../.designer/backup/src/archivo.svg</iconset>
+                         <normaloff>src/archivo.svg</normaloff>src/archivo.svg</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -995,7 +995,7 @@ QTableWidget QTableCornerButton::section{
                        </property>
                        <property name="icon">
                         <iconset>
-                         <normaloff>../../../../../../../../../../.designer/backup/src/archivo.svg</normaloff>../../../../../../../../../../.designer/backup/src/archivo.svg</iconset>
+                         <normaloff>src/archivo.svg</normaloff>src/archivo.svg</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -1018,7 +1018,7 @@ QTableWidget QTableCornerButton::section{
                        </property>
                        <property name="icon">
                         <iconset>
-                         <normaloff>../../../../../../../../../../.designer/backup/src/archivo.svg</normaloff>../../../../../../../../../../.designer/backup/src/archivo.svg</iconset>
+                         <normaloff>src/archivo.svg</normaloff>src/archivo.svg</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
