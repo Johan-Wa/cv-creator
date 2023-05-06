@@ -43,6 +43,9 @@ class PDF1(FPDF):
     
     def set_context(self,context={},selected_font='Times San Serif',colors={}):
         self.selected_font = selected_font
+        if self.selected_font in fn.fonts_dict.keys():
+            self.add_font(family=fn.fonts_dict[selected_font][0], style=fn.fonts_dict[selected_font][1],
+        fname=fn.fonts_dict[selected_font][2],uni=True)
         self.context = {
             'use_work_desc': False,
             'name': '',
@@ -60,21 +63,19 @@ class PDF1(FPDF):
         }
         self.context.update(context)
         self.colors = {
-            'color1': 'blue1',
-            'color2': 'blue2',
-            'b_color': 'black',
-            'c_color': 'gray1'
+            'color1': (95,193,171),
+            'color2': (119,138,178),
+            'b_color': (0,0,0),
+            'c_color': (97,96,96)
             }
         self.colors.update(colors)
 
     def header(self):
 
         #Charge bg
-        fn.change_bg_color(self.context['bg'], self.colors['color1'], 'blue1',150)
+        fn.change_bg_color(self.context['bg'], self.colors['color1'], (95,193,171),150)
         self.image('output.png', x=0,y=0,w=210,h=297)
         # Set the font
-        self.add_font(family='Times San Serif', style='',
-        fname='fonts/TIMESS__.ttf',uni=True)
         fn.change_size_font(self, 20)
 
         # Title
@@ -144,7 +145,7 @@ class PDF1(FPDF):
 
         # Carge or profetion
         if self.context['carge']:
-            fn.change_text_color(self,'red1')
+            fn.change_text_color(self,(199, 0 , 27))
             fn.change_size_font(self, 16)
             self.cell(w=0, h=7, border=0, align='R', txt=self.context['carge'], ln=1)
             fn.change_text_color(self,self.colors['b_color'])
@@ -223,6 +224,9 @@ class PDF2(FPDF):
 
     def set_context(self,context={},selected_font='Helvetica',colors={}):
         self.selected_font = selected_font
+        if self.selected_font in fn.fonts_dict.keys():
+            self.add_font(family=fn.fonts_dict[selected_font][0], style=fn.fonts_dict[selected_font][1],
+        fname=fn.fonts_dict[selected_font][2],uni=True)
         self.context = {
             'use_work_desc': False,
             'name': '',
@@ -240,9 +244,9 @@ class PDF2(FPDF):
         }
         self.context.update(context)
         self.colors = {
-            'color1': 'naranja-piel',
-            'color2': 'marron-naranja',
-            'b_color':'black'
+            'color1': (218,197,149),
+            'color2': (127,91,6),
+            'b_color':(0,0,0)
         }
         self.colors.update(colors)
 
@@ -254,7 +258,7 @@ class PDF2(FPDF):
             self.set_xy(5,60)
             self.ln(4)
         # Charge Background
-        fn.change_bg_color(self.context['bg'], self.colors['color1'], 'naranja-piel')
+        fn.change_bg_color(self.context['bg'], self.colors['color1'], (218,197,149))
         self.image('output.png',x=0,y=0,w=210,h=297,)
         
         footer_titles = [5,60, 10,0,'C',1,0,'']
@@ -309,16 +313,13 @@ class PDF2(FPDF):
             
 
     def body(self):
-        
-        self.add_font(family='Times San Serif', style='',
-        fname='fonts/TIMESS__.ttf',uni=True)
 
         fn.change_size_font(self, 20)
         self.set_left_margin(70)
         fn.change_text_color(self,self.colors['color2'])
         self.cell(w=0,h=10, border=0, txt=self.context['name'],align='C', ln=1)
         fn.change_size_font(self, 14,'B')
-        fn.change_text_color(self,'red1')
+        fn.change_text_color(self,(199, 0 , 27))
         self.cell(w=0,h=10, border='B', txt=self.context['carge'],align='R', ln=1)
         fn.change_text_color(self,self.colors['b_color'])
         self.ln(5)
@@ -383,4 +384,3 @@ class PDF2(FPDF):
                     self.context['skills']['description'][i],'m',set_x=False)
                 self.ln(3)
             
-

@@ -1,24 +1,19 @@
 #imports
 import os
+#
+from fpdf import errors
 import numpy as np
 from PIL import Image
 
-colors_dict = {
-    'black': (0,0,0),
-    'blue1': (95,193,171),
-    'blue2': (119,138,178),
-    'red1': (199, 0 , 27),
-    'gray1': (97,96,96),
-    'gray-red': (145,121,121),
-    'naranja-piel': (218,197,149),
-    'marron-naranja': (127,91,6)
+fonts_dict = {
+    'Times San Serif': ('Times San Serif','','fonts/TIMESS__.ttf')
 }
 
 
 def change_size_font(pdf,size, style=''):
     try:
         pdf.set_font(pdf.selected_font,style,size)
-    except RuntimeError:
+    except errors.FPDFException:
         pdf.set_font(pdf.selected_font,'',size)
 
 def print_data(pdf,param,context_item,set_x=True):
@@ -40,27 +35,23 @@ def print_cell(pdf,param,txt,type_cell='c',set_x=True):
     elif type_cell == 'm':
         pdf.multi_cell(w=param[1],h=param[2],txt=txt,border=param[3],
             align=param[4], fill=param[6])
-        
-def select_color(color):
-    if colors_dict[color]:
-        return colors_dict[color]
 
 
-def change_fill_color(pdf,color='black'):
-    rgb = select_color(color)
-    pdf.set_fill_color(r=rgb[0],g=rgb[1],b=rgb[2])
-def change_text_color(pdf,color='black'):
-    rgb = select_color(color)
-    pdf.set_text_color(r=rgb[0],g=rgb[1],b=rgb[2])
-def change_draw_color(pdf,color='black'):
-    rgb = select_color(color)
-    pdf.set_draw_color(r=rgb[0],g=rgb[1],b=rgb[2])
+def change_fill_color(pdf,color=(0,0,0)):
+    #rgb = select_color(color)
+    pdf.set_fill_color(color)
+def change_text_color(pdf,color=(0,0,0)):
+    #rgb = select_color(color)
+    pdf.set_text_color(color)
+def change_draw_color(pdf,color=(0,0,0)):
+    #rgb = select_color(color)
+    pdf.set_draw_color(color)
 
 def change_bg_color(image,new_color,color,alpha=''):
     new_color=new_color
-    color=select_color(color)
+    #color=select_color(color)
 
-    rgb = select_color(new_color)
+    #rgb = select_color(new_color)
 
     icon = Image.open(image)
     icon = icon.convert("RGBA")
@@ -76,7 +67,7 @@ def change_bg_color(image,new_color,color,alpha=''):
                 a=alpha
             if (r, g, b) == color:
                 
-                pixels[x, y] = (rgb[0], rgb[1], rgb[2], a)
+                pixels[x, y] = (new_color[0], new_color[1], new_color[2], a)
     icon.save('output.png')
 
 

@@ -3,9 +3,10 @@ import os
 from pathlib import Path
 import pandas as pd
 # Pqt5
-from PyQt5.QtWidgets import QDialog,QApplication, QMainWindow, QHeaderView, QFileDialog
+from PyQt5.QtWidgets import QDialog,QApplication, QMainWindow, QHeaderView, QFileDialog, QColorDialog
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
 from PyQt5.uic import loadUi
+from PyQt5.QtGui import QColor, QPixmap
 from PyQt5 import QtCore, QtWidgets
 
 import functions as fn
@@ -54,15 +55,22 @@ class MainWindow(QMainWindow):
         self.bt_work.clicked.connect(lambda: self.charge_file((self.le_works, '(*.csv)')))
         self.bt_skills.clicked.connect(lambda: self.charge_file((self.le_skills, '(*.csv)')))
         self.bt_output.clicked.connect(self.charge_dir)
+        # Colors pick
+        self.col_1 = QColor (95,193,171)
+        self.col_2 = QColor (119,138,178)
+        self.fr_color1.setStyleSheet('QWidget {Background-color: %s}' % self.col_1.name())
+        self.fr_color2.setStyleSheet('QWidget {Background-color: %s}' % self.col_2.name())
+        self.bt_color1.clicked.connect(lambda: self.show_color_dialog(self.col_1, self.fr_color1))
+        self.bt_color2.clicked.connect(lambda: self.show_color_dialog(self.col_2, self.fr_color2))
         # Combobox
-        colors = fn.colors_dict.copy()
-        colors.pop('black')
-        colors_selection = [i for i in colors.keys()]
+        
         fonts = ['Courier','Helvetica', 'Times', 'Times San Serif']
-        self.comboC1.addItems(colors_selection)
-        self.comboC2.addItems(colors_selection)
         self.comboTem.addItems(i for i in self.templates)
         self.comboFont.addItems(fonts)
+
+        # Templates view
+        template_path = 'gui/src/templates/'
+        self.comboTem.currentTextChanged.connect(lambda : self.lb_image.setPixmap(QPixmap(template_path + self.comboTem.currentText() + '.jpg')))
 
 
         # Hide title bar (opacity)
@@ -138,9 +146,12 @@ class MainWindow(QMainWindow):
         else:
             use_work_description = False
 
+        color1 = self.fr_color1.palette().window().color().name().lstrip('#')
+        color2 = self.fr_color2.palette().window().color().name().lstrip('#')
+
         colors_dict= {
-            'color1': self.comboC1.currentText(),
-            'color2': self.comboC2.currentText()
+            'color1': tuple(int(color1[i:i+2], 16) for i in (0, 2, 4)),
+            'color2': tuple(int(color2[i:i+2], 16) for i in (0, 2, 4))
         }
 
         social = self.te_social.toPlainText().split('\n')
@@ -213,6 +224,11 @@ class MainWindow(QMainWindow):
             self.showNormal()
             self.bt_normalsize.hide()
             self.bt_maximize.show()
+
+    def show_color_dialog(self,col,fr_color):
+        col = QColorDialog.getColor()
+        if col.isValid():
+            fr_color.setStyleSheet('QWidget {Background-color: %s}' % col.name())
 
     def test_data(self):
         # variables set to test

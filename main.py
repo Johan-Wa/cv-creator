@@ -15,7 +15,7 @@ def run():
     app = QApplication(sys.argv)
     my_app = MainWindow()
     my_app.show()
-    #my_app.test_data()
+    my_app.test_data()
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
