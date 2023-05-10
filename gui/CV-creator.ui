@@ -1188,12 +1188,15 @@ color: rgb(20,200,220);</string>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLabel" name="label_18">
+                      <widget class="QLabel" name="lb_font">
                        <property name="maximumSize">
                         <size>
                          <width>16777215</width>
                          <height>30</height>
                         </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 18pt &quot;Adobe Courier&quot;;</string>
                        </property>
                        <property name="text">
                         <string>Fuente</string>

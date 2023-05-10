@@ -6,7 +6,7 @@ import pandas as pd
 from PyQt5.QtWidgets import QDialog,QApplication, QMainWindow, QHeaderView, QFileDialog, QColorDialog
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
 from PyQt5.uic import loadUi
-from PyQt5.QtGui import QColor, QPixmap
+from PyQt5.QtGui import QColor, QPixmap, QFont, QFontDatabase
 from PyQt5 import QtCore, QtWidgets
 
 import functions as fn
@@ -40,6 +40,7 @@ class MainWindow(QMainWindow):
         self.bt_filepath.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_files))
         self.bt_config.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_config))
         # Create button
+        
         self.bt_create.clicked.connect(self.create_cv)
         # Clear buttons
         data_lines = [self.le_name,self.le_phone,self.le_page,self.le_email,self.le_carge,self.te_social]
@@ -63,10 +64,16 @@ class MainWindow(QMainWindow):
         self.bt_color1.clicked.connect(lambda: self.show_color_dialog(self.col_1, self.fr_color1))
         self.bt_color2.clicked.connect(lambda: self.show_color_dialog(self.col_2, self.fr_color2))
         # Combobox
-        
-        fonts = ['Courier','Helvetica', 'Times', 'Times San Serif']
+        self.fonts_dict = {'Courier': 'Adobe Courier',
+        'Helvetica': 'Adobe Helvetica', 
+        'Times': 'Adobe Times',
+        'Times San Serif': 'Times Sans Serif',
+        'Iosevka': 'Iosevka',
+        }
+        #fonts = ['Courier','Helvetica', 'Times', 'Times San Serif','Iosevka']
         self.comboTem.addItems(i for i in self.templates)
-        self.comboFont.addItems(fonts)
+        self.comboFont.addItems(self.fonts_dict.keys())
+        self.comboFont.currentTextChanged.connect(self.change_font)
 
         # Templates view
         template_path = 'gui/src/templates/'
@@ -230,6 +237,12 @@ class MainWindow(QMainWindow):
         if col.isValid():
             fr_color.setStyleSheet('QWidget {Background-color: %s}' % col.name())
 
+    
+    def change_font(self):
+        
+        if self.comboFont.currentText() in self.fonts_dict.keys():
+            self.lb_font.setStyleSheet('QWidget {font: 18pt "%s";}' % self.fonts_dict[self.comboFont.currentText()])
+        
     def test_data(self):
         # variables set to test
         path = Path.home() / 'programing/python/documents_create/pdf/CV'
@@ -245,7 +258,7 @@ class MainWindow(QMainWindow):
         self.le_skills.setText(str(path / 'data/skills.csv'))
         self.le_output.setText(str(path))
         self.le_photo.setText(str(path / 'src/foto.jpg'))
-        self.le_description.setText(str(path / 'description.txt'))
+        self.le_description.setText(str(path / 'data/description.txt'))
         self.le_filename.setText('gui_cv')
 
 

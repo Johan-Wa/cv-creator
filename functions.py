@@ -6,9 +6,13 @@ import numpy as np
 from PIL import Image
 
 fonts_dict = {
-    'Times San Serif': ('Times San Serif','','fonts/TIMESS__.ttf')
+    'Times San Serif': ('Times San Serif','','fonts/TIMESS__.ttf'),
+    'Iosevka': ('Iosevka','','fonts/Iosevka-Nerd-Font-Complete.ttf'),
 }
 
+def add_font(pdf,font):
+    pdf.add_font(family=fonts_dict[font][0], style=fonts_dict[font][1],
+        fname=fonts_dict[font][2],uni=True)
 
 def change_size_font(pdf,size, style=''):
     try:

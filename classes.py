@@ -44,8 +44,8 @@ class PDF1(FPDF):
     def set_context(self,context={},selected_font='Times San Serif',colors={}):
         self.selected_font = selected_font
         if self.selected_font in fn.fonts_dict.keys():
-            self.add_font(family=fn.fonts_dict[selected_font][0], style=fn.fonts_dict[selected_font][1],
-        fname=fn.fonts_dict[selected_font][2],uni=True)
+            fn.add_font(self, selected_font)
+            
         self.context = {
             'use_work_desc': False,
             'name': '',
@@ -225,8 +225,7 @@ class PDF2(FPDF):
     def set_context(self,context={},selected_font='Helvetica',colors={}):
         self.selected_font = selected_font
         if self.selected_font in fn.fonts_dict.keys():
-            self.add_font(family=fn.fonts_dict[selected_font][0], style=fn.fonts_dict[selected_font][1],
-        fname=fn.fonts_dict[selected_font][2],uni=True)
+            fn.add_font(self, selected_font)
         self.context = {
             'use_work_desc': False,
             'name': '',

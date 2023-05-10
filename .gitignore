@@ -1,6 +1,7 @@
 dist
 build
 __pycache__
-gui
+gui/src/
 src
 venv
+gui_cv.pdf

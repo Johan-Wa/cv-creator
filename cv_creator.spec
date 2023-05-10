@@ -5,10 +5,10 @@ block_cipher = None
 
 
 a = Analysis(
-    ['main.py'],
+    ['main.py','functions.py','gui.py','classes.py'],
     pathex=[],
     binaries=[],
-    datas=[('./description.txt','./description.txt')],
+    datas=[('./data','./data'),('./fonts','./fonts'),('./gui','./gui'),('./src','./src')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -37,6 +37,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon='gui/src/icono.ico'
 )
 coll = COLLECT(
     exe,
