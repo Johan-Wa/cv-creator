@@ -64,10 +64,10 @@ Now we need to create 4 documents that will have our information to generate the
 | Python | web and desktop development using python language |
 
 When we open the program we will have an interface like this:
-![data](file:///home/dracul/programing/python/documents_create/pdf/CV/src/screenshots/mainpy1.png "data")
+![data](https://github.com/Johan-Wa/cv-creator/blob/master/src/screenshots/mainpy1.png?raw=true)
 
 complete the data, and then chosse previous files make from our information.
-![files](file:///home/dracul/programing/python/documents_create/pdf/CV/src/screenshots/mainpy2.png "files")
+![files](https://github.com/Johan-Wa/cv-creator/blob/master/src/screenshots/mainpy2.png?raw=true)
 for the end we only chosse the two principal colors, the tamplate and the font type.
-![config](file:///home/dracul/programing/python/documents_create/pdf/CV/src/screenshots/mainpy3.png "config")
+![config](https://github.com/Johan-Wa/cv-creator/blob/master/src/screenshots/mainpy3.png?raw=true)
 and select if you want add the jobs description or not.
