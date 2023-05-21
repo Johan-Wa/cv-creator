@@ -37,12 +37,13 @@ or in windows
 ```sh
 pip install -r requeriments.txt
 ```
-
+### Use
 now we can use the program running 
 ```sh
 python main.py
 ```
 Now we need to create 4 documents that will have our information to generate the pdf CV:
+
 1) A .txt document that have a little description of the profetional profile.
 2) A .csv file tha have our education information
 
@@ -60,4 +61,13 @@ Now we need to create 4 documents that will have our information to generate the
 
 | Skill name | Skill description |
 |------------|-------------------|
-| Python | web and descktop development using python language |
+| Python | web and desktop development using python language |
+
+When we open the program we will have an interface like this:
+![data](file:///home/dracul/programing/python/documents_create/pdf/CV/src/screenshots/mainpy1.png "data")
+
+complete the data, and then chosse previous files make from our information.
+![files](file:///home/dracul/programing/python/documents_create/pdf/CV/src/screenshots/mainpy2.png "files")
+for the end we only chosse the two principal colors, the tamplate and the font type.
+![config](file:///home/dracul/programing/python/documents_create/pdf/CV/src/screenshots/mainpy3.png "config")
+and select if you want add the jobs description or not.
